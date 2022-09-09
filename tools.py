@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import os
 import csv
 
@@ -35,13 +36,12 @@ def get_fps(filename):
 
 
 def Load_csv(filename):
-    with open(filename) as f:
-        reader = csv.reader(f)
-        full = np.array(list(reader))[1:, :18]
-        particles = np.array(full, dtype=np.float32)
-        data = np.concatenate((particles[:, :6], particles[:, 7:8], particles[:, 12:15]), axis=1)
-        timestep = particles[0, 6]
-        return data, timestep  # input[:, :7], output[:, 7:]
+    df = pd.read_csv(filename, dtype=float)
+    df['isFluidSolid'] = df['isFluidSolid'].astype(int)
+    particles = df.values
+    data = np.concatenate((particles[:, :6], particles[:, 7:8], particles[:, 12:15]), axis=1)
+    timestep = particles[0, 6]
+    return data, timestep  # input[:, :7], output[:, 7:]
 
 
 def Draw_voxels(point_cloud, voxel_size, grid_size, lidar_coord):

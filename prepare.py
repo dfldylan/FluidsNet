@@ -24,8 +24,8 @@ os.makedirs(log_dir, exist_ok=True)
 os.makedirs(trans_data_dir, exist_ok=True)
 
 train_csv_list = Find_csv_from_parent_folder(csv_folders, csv_range)
-predict_csv_list = Find_csv(predict_dir)
-predict_csv_list.sort(key=get_fps)
+# predict_csv_list = Find_csv(predict_dir)
+# predict_csv_list.sort(key=get_fps)
 
 bias_x = mini_grid_size[1] * mini_grid_size[2]
 bias_y = mini_grid_size[2]

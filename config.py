@@ -1,7 +1,7 @@
 import os
 
 epoch = 10
-sample_folder = r'D:\data\sample\scene1'
+sample_folder = r'Z:\dufeilong\datasets\normal'
 file_list = os.listdir(sample_folder)
 for item in os.listdir(sample_folder):
     if len(item.split(r'.')) > 1:
@@ -9,7 +9,7 @@ for item in os.listdir(sample_folder):
 csv_folders = list(map(lambda x: os.path.join(sample_folder, x), file_list))
 csv_range = None
 
-predict_dir = r'D:\data\sample\scene1\1'
+# predict_dir = r'D:\data\sample\scene1\1'
 
 save_model_dir = './save_model_dir'
 log_dir = './log_dir'
